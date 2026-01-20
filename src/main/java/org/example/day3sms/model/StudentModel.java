@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "students")
 public class StudentModel {
 
-    @Id
+    @Id // primary key --> @Id (annotator)
     private String id;
     private String name;
     private int age;

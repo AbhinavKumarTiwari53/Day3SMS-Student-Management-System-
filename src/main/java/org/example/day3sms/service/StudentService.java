@@ -37,4 +37,12 @@ public class StudentService {
 
         return repository.save(existingStudent);
     }
+
+    //Delete
+    public StudentModel deleteStudents(String id , StudentModel student){
+        StudentModel existingStudent = repository.findById(id)
+                .orElseThrow(()->new RuntimeException("No Student Found"));
+        repository.delete(existingStudent);
+        return existingStudent;
+    }
 }

@@ -30,8 +30,15 @@ public class StudentController {
         return service.getStudents();
     }
 
+    //update Student
     @PutMapping("/update/{id}")
     public StudentModel updateStudent(@PathVariable String id, @RequestBody StudentModel student){
         return service.updateStudents(id,student);
+    }
+
+    //Delete Student
+    @DeleteMapping("/delete/{id}")
+    public StudentModel deleteStudent(@PathVariable String id, @RequestBody StudentModel student){
+        return service.deleteStudents(id,student);
     }
 }

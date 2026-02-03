@@ -1,6 +1,9 @@
 package org.example.day3sms.controller;
 
 
+import jakarta.validation.Valid;
+import org.example.day3sms.DTO.StudentRequestDto;
+import org.example.day3sms.DTO.StudentResponseDto;
 import org.example.day3sms.model.StudentModel;
 import org.example.day3sms.service.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -19,15 +22,15 @@ public class StudentController {
     }
 
     @PostMapping("/add-student")
-    public StudentModel addStart(@RequestBody StudentModel student){
+    public StudentResponseDto addStart(@Valid @RequestBody StudentRequestDto student){
         return service.addStudent(student);
     }
 
 
     //Display Student
     @GetMapping("/students")
-    public List<StudentModel> getStudents(){
-        return service.getStudents();
+    public List<StudentResponseDto> getStudents(){
+        return service.getAllStudents();
     }
 
     //update Student

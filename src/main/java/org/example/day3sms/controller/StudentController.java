@@ -6,10 +6,12 @@ import org.example.day3sms.DTO.StudentRequestDto;
 import org.example.day3sms.DTO.StudentResponseDto;
 import org.example.day3sms.model.StudentModel;
 import org.example.day3sms.service.StudentService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class StudentController {
 
@@ -41,7 +43,9 @@ public class StudentController {
 
     //Delete Student
     @DeleteMapping("/delete/{id}")
-    public StudentModel deleteStudent(@PathVariable String id, @RequestBody StudentModel student){
-        return service.deleteStudents(id,student);
+    public ResponseEntity<Void> deleteStudent(@PathVariable String id) {
+        service.deleteStudent(id);
+        return ResponseEntity.noContent().build(); // 204
     }
+
 }

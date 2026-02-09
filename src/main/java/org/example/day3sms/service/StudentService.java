@@ -58,11 +58,12 @@ public class StudentService {
         return repository.save(existingStudent);
     }
 
-    //Delete
-    public StudentModel deleteStudents(String id , StudentModel student){
-        StudentModel existingStudent = repository.findById(id)
-                .orElseThrow(()->new StudentNotFoundException("No Student Found"));
-        repository.delete(existingStudent);
-        return existingStudent;
+    // Delete student by ID
+    public void deleteStudent(String id) {
+        if (!repository.existsById(id)) {
+            throw new StudentNotFoundException("No Student Found with id: " + id);
+        }
+        repository.deleteById(id);
     }
+
 }
